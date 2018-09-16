@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="login-container" style="padding-top: 100px;">
+    <div>
+        <h1>Login</h1>
+    </div>
+    <form action="/auth" method="POST">
+        <div class="auth__wrap-input">
+            <input type="email" class="auth__input" placeholder="e-mail" name="email" required />
+        </div>
+        <div class="auth__wrap-input">
+            <input type="password" class="auth__input" placeholder="password" name="password" pattern=".{5,20}" required/>
+        </div>
+        <button class="button button--large button--black-bg auth__button">Log In</button>
+    </form>
+    <div>
+        <a href="./forgot"><h3 class="auth__forgot-password">Forgot your password?</h3></a>
+    </div>
+</div>
+<div class="register-container">
+    <div>
+        <h1>Register</h1>
+    </div>
+    <form action="/register" method="POST">
+        <div class="auth__wrap-input">
+            <input type="email" class="auth__input" placeholder="e-mail" name="email" required />
+        </div>
+        <div class="auth__wrap-input">
+            <input type="password" class="auth__input" placeholder="password" name="password" pattern=".{5,20}" required />
+        </div>
+        <div class="auth__wrap-input">
+            <input type="password" class="auth__input" placeholder="confirm password" name="confirm-password" pattern=".{5,20}" required />
+        </div>
+        <button class="button button--large button--black-bg auth__button">Register</button>
+    </form>
+</div>
+{% endblock %}

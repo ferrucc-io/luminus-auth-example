@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Leiningen: selmer:1.12.0">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/selmer/selmer/1.12.0/selmer-1.12.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

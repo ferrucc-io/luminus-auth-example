@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Leiningen: ring-webjars:0.2.0">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/ring-webjars/ring-webjars/0.2.0/ring-webjars-0.2.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

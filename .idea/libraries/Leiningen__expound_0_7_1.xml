@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Leiningen: expound:0.7.1">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/expound/expound/0.7.1/expound-0.7.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
