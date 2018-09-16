@@ -12,3 +12,5 @@ profiles.clj
 /.env
 .nrepl-port
 /log
+.idea/vcs.xml
+.idea/workspace.xml
