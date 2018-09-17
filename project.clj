@@ -28,7 +28,9 @@
                  [toucan "1.1.9"]
                  [org.clojure/java.jdbc "0.7.8"]
                  [com.mchange/c3p0 "0.9.5.2"]
-                 [org.postgresql/postgresql "9.4.1208.jre7"]]
+                 [org.postgresql/postgresql "9.4.1208.jre7"]
+                 [buddy/buddy-auth "2.1.0"]
+                 [buddy/buddy-hashers "1.3.0"]]
 
   :min-lein-version "2.0.0"
   

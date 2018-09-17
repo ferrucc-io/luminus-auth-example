@@ -14,3 +14,14 @@ profiles.clj
 /log
 .idea/vcs.xml
 .idea/workspace.xml
+clj-auth.iml
+.idea/workspace.xml
+.idea/libraries/Leiningen__toucan_1_1_9.xml
+.idea/libraries/Leiningen__org_postgresql_postgresql_9_4_1208_jre7.xml
+.idea/libraries/Leiningen__org_clojure_tools_namespace_0_2_10.xml
+.idea/libraries/Leiningen__org_clojure_java_jdbc_0_7_8.xml
+.idea/libraries/Leiningen__org_clojure_java_classpath_0_3_0.xml
+.idea/libraries/Leiningen__net_cgrand_macrovich_0_2_1.xml
+.idea/libraries/Leiningen__honeysql_0_9_3.xml
+.idea/libraries/Leiningen__com_mchange_mchange_commons_java_0_2_11.xml
+.idea/libraries/Leiningen__com_mchange_c3p0_0_9_5_2.xml
