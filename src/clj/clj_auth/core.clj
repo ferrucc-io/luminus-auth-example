@@ -15,7 +15,7 @@
 (def ^:private ^:const db-spec
   {:classname   "org.postgresql.Driver"
    :subprotocol "postgresql"
-   :subname     "//localhost:5434/auth"})
+   :subname     "//localhost:5432/auth"})
 
 (defn connection-pool
   "Create a c3p0 connection pool for the given database SPEC."

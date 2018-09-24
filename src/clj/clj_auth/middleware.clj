@@ -11,9 +11,17 @@
             [clj-auth.config :refer [env]]
             [ring.middleware.flash :refer [wrap-flash]]
             [immutant.web.middleware :refer [wrap-session]]
-            [ring.middleware.defaults :refer [site-defaults wrap-defaults]])
+            [ring.middleware.defaults :refer [site-defaults wrap-defaults]]
+            [buddy.auth.middleware :refer [wrap-authentication wrap-authorization]]
+            [buddy.auth.backends.session :refer [session-backend]])
   (:import 
            [org.joda.time ReadableInstant]))
+
+(defn wrap-session-auth [handler]
+  (let [backend (session-backend)]
+    (-> handler
+        (wrap-authentication backend)
+        (wrap-authorization backend))))
 
 (defn wrap-internal-error [handler]
   (fn [req]

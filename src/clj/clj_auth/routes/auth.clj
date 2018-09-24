@@ -3,7 +3,7 @@
             [clj-auth.models :as db-model]
             [clj-auth.utilities :refer :all]
             [compojure.core :refer :all]
-            [ring.util.http-response :as response]
+            [ring.util.response :as res]
             [toucan.db :as db]))
 
 
@@ -13,13 +13,15 @@
           password (get-in req [:form-params "password"])]
       (if (db/exists? db-model/User :email email)
         (do
-          (error-page {:status 200
-                       :title "User already exists"
-                       :message "Did you forget your password?"})
-        (user-create email password))))
-    (error-page {:status 200
-                 :title "Passwords don't match"
-                 :message "The passwords you wrote aren't the same"})))
+          (layout/error-page {:status 200
+                              :title "User already exists"
+                              :message "Did you forget your password?"})
+        (do
+          (user-create email password)
+          (res/redirect "https://google.com")))))
+    (layout/error-page {:status 200
+                        :title "Passwords don't match"
+                        :message "The passwords you wrote aren't the same"})))
 
 (defn login-handler [req]
   (let [email (get-in req [:form-params "email"])
@@ -28,15 +30,15 @@
     (if (db/exists? db-model/User :email email)
       (do
         (if (check-password password (:password (user-selector email)))
-          (do (assoc-in (ok-res {:id (:id (user-selector email))}) [session :identity] {:id (:id (user-selector email))})
-              (res/redirect-after-post "/u/profile"))
-          (error-page {:status 200
-                       :title "Wrong password"
-                       :message "The password you typed is wrong"})
+          (do (assoc-in (ok {:id (:id (user-selector email))}) [session :identity] {:id (:id (user-selector email))})
+              (res/redirect "/u/profile"))
+          (layout/error-page {:status 200
+                              :title "Wrong password"
+                              :message "The password you typed is wrong"})
           ))
-      (error-page {:status 200
-                   :title "User doesn't exist"
-                   :message "This user doesn't exist"}))))
+      (layout/error-page {:status 200
+                          :title "User doesn't exist"
+                          :message "This user doesn't exist"}))))
 
 
 (defroutes auth-routes

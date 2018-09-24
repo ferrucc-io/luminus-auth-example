@@ -4,15 +4,27 @@
             [toucan.db :as db]
             [buddy.hashers :as hashers]))
 
+(defn ok
+  "Default ok response"
+  ([] (ok nil))
+  ([body]
+   {:status 200
+    :headers {}
+    :body body}))
+
 (defn user-selector [email]
+  "Given an email returns a user object from the DB"
   (db/select-one model/User :email email))
 
 (defn check-password [input-password db-password]
+  "Checks if a password corresponds to the hashed password in the DB"
   (hashers/check input-password db-password))
 
 (defn create-password [input-password]
+  "Hashes password to store it in DB"
   (hashers/derive input-password))
 
 (defn user-create [email password]
+  "Creates an instance of user in the database"
   (db/insert! model/User {:email email
                           :password (create-password password)}))

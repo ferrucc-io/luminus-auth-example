@@ -4,7 +4,8 @@
             [ring.util.http-response :as response]
             [clojure.java.io :as io]))
 
-(defn home-page []
+(defn home-page [req]
+  (println (:identity req))
   (layout/render
     "home.html"))
 
@@ -15,7 +16,7 @@
   (layout/render "profile.html" {:user "ferruccio"}))
 
 (defroutes home-routes
-  (GET "/" [] (home-page))
+  (GET "/" req (home-page req))
   (GET "/about" [] (about-page))
   (GET "/u/profile" [] (profile-page)))
 
