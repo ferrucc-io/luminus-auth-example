@@ -26,22 +26,27 @@
 (defn login-handler [req]
   (let [email (get-in req [:form-params "email"])
         password (get-in req [:form-params "password"])
-        session (get-in req [:form-params "session"])]
+        session (:session req)]
     (if (db/exists? db-model/User :email email)
       (do
         (if (check-password password (:password (user-selector email)))
-          (do (assoc-in (ok {:id (:id (user-selector email))}) [session :identity] {:id (:id (user-selector email))})
-              (res/redirect "/u/profile"))
+          (do (let [ updated-session (assoc session :identity (keyword email))]
+                (-> (res/redirect "/")
+                    (assoc :session updated-session))))
           (layout/error-page {:status 200
                               :title "Wrong password"
-                              :message "The password you typed is wrong"})
-          ))
+                              :message "The password you typed is wrong"})))
       (layout/error-page {:status 200
                           :title "User doesn't exist"
                           :message "This user doesn't exist"}))))
 
+(defn logout [req]
+  (-> (res/redirect "/")
+      (assoc :session {})))
+
 
 (defroutes auth-routes
   (POST "/auth" req (login-handler req))
-  (POST "/register" req (register-handler req)))
+  (POST "/register" req (register-handler req))
+  (GET "/logout" req (logout req)))
 

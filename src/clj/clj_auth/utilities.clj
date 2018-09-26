@@ -30,3 +30,7 @@
   (def pw (create-password password))
   (db/insert! model/User {:email email
                           :password pw}))
+
+(defn req-user [req]
+  (if (get-in req [:session :identity])
+    (name (get-in req [:session :identity]))))
