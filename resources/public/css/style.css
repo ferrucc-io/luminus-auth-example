@@ -3,7 +3,188 @@ body {
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     height: 100%;
 }
-nav {
-    margin-bottom: 20px;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0; }
+
+html {
+    height: 100%;
+    font-size: 16px;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -ms-overflow-style: scrollbar; }
+
+*::-moz-selection, *::-moz-selection {
+    color: white;
+    background-color: #4D61FC; }
+
+*::-moz-selection, *::selection {
+    color: white;
+    background-color: #4D61FC; }
+
+body {
+    background-color: white;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter UI", Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #3d3d3d; }
+body.state-fixed-body {
+    overflow: hidden; }
+
+hr {
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible; }
+
+strong, b {
+    font-weight: 700; }
+
+input,
+button,
+select,
+optgroup,
+textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit; }
+
+button,
+input {
+    border: none;
+    background: none;
+    overflow: visible; }
+
+button {
+    border-radius: 0; }
+
+p {
+    margin-bottom: 1em;
+    margin-top: 1em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter UI", serif;
+    line-height: 1.4; }
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    line-height: 1.3;
+    color: #303030; }
+
+button:focus,
+input:focus,
+textarea:focus {
+    outline: none; }
+
+.button {
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+    padding: 12px 20px 12px;
+    min-width: 120px;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px 0 rgba(136, 144, 195, 0.2), 0 5px 15px 0 rgba(37, 44, 97, 0.15);
+    font-size: 14px;
+    font-weight: 700;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; }
+.button[disabled] {
+    cursor: default; }
+.button[disabled]:hover, .button[disabled]:focus {
+    transform: none; }
+.button[disabled]:hover .icon, .button[disabled]:focus .icon {
+    transform: none; }
+.button[disabled]:active {
+    transform: none;
+    outline: none; }
+.button[disabled]:not(.state-show-success-tick):not(.state-show-spinner) {
+    opacity: 0.4; }
+.button .icon {
+    display: inline-block;
+    vertical-align: middle;
+    height: 1em;
+    width: 1em;
+    margin-left: 7px;
+    transition: opacity 0.2s ease, transform 0.2s ease; }
+.button:hover, .button:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px 0 rgba(136, 144, 195, 0.22), 0 8px 15px 0 rgba(37, 44, 97, 0.17); }
+.button:hover .icon, .button:focus .icon {
+    transform: translateX(3px); }
+.button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px 0 rgba(136, 144, 195, 0.2), 0 5px 15px 0 rgba(37, 44, 97, 0.15);
+    outline: none; }
+
+
+.nav__logged-user {
+    text-align: right;
+    padding: 8px;
+    margin-right: 10px;
 }
 
+.login-container, .register-container{
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.auth__wrap-input {
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    background-color: #e6e6e6;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.auth__input {
+    font-weight: bold;
+    color: #000000;
+    line-height: 1.2;
+    font-size: 18px;
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    background: transparent;
+    height: 62px;
+    padding: 0 20px 0 38px;
+    border-radius: 4px;
+}
+
+.auth__button {
+    width: 100%;
+    max-width: 600px;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: #303030;
+    color: white;
+    padding: 16px 30px;
+}
+
+.auth__button:hover{
+    background-color: black;
+}
+
+.auth__forgot-password {
+    text-align: right;
+    color: black;
+}
+
+
+.auth__forgot-password:hover {
+    color: black;
+}
+
+.auth__input:active, .auth__input:focus {
+    border: 3px solid #000000
+}

@@ -1,6 +1,6 @@
 (ns clj-auth.models
     (:require [toucan [db :as db]
-              [models :as models]]
+                      [models :as models]]
               [clojure.java.jdbc :as jdb])
     (:gen-class))
 
@@ -21,4 +21,4 @@
                  (properties [_]
                              {:timestamped true})
                  (default_fields [_]
-                                 [:id :email :password]))
+                             [:id :email :password]))

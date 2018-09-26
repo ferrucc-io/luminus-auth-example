@@ -5,9 +5,11 @@
             [clojure.java.io :as io]))
 
 (defn home-page [req]
-  (println (:identity req))
-  (layout/render
-    "home.html"))
+  (if (:identity req)
+    (layout/render
+    "home.html" {:user (:identity req)})
+    (layout/render
+      "home.html" {:user "anonymous"})))
 
 (defn about-page []
   (layout/render "about.html"))

@@ -2,7 +2,8 @@
   (:require [compojure.core :refer :all]
             [clj-auth.models :as model]
             [toucan.db :as db]
-            [buddy.hashers :as hashers]))
+            [buddy.hashers :as hashers])
+  (:gen-class))
 
 (defn ok
   "Default ok response"
@@ -26,5 +27,6 @@
 
 (defn user-create [email password]
   "Creates an instance of user in the database"
+  (def pw (create-password password))
   (db/insert! model/User {:email email
-                          :password (create-password password)}))
+                          :password pw}))

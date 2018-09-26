@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
+<nav>
+    <p class="nav__logged-user">Hello 👋 {{ user }}</p>
+</nav>
 <div class="login-container" style="padding-top: 100px;">
     <div>
         <h1>Login</h1>
@@ -11,10 +14,10 @@
         <div class="auth__wrap-input">
             <input type="password" class="auth__input" placeholder="password" name="password" pattern=".{5,20}" required/>
         </div>
-        <button class="button button--large button--black-bg auth__button">Log In</button>
+        <button class="button auth__button">Log In</button>
     </form>
     <div>
-        <a href="./forgot"><h3 class="auth__forgot-password">Forgot your password?</h3></a>
+        <a href="./forgot"><p class="link auth__forgot-password">Forgot your password?</p></a>
     </div>
 </div>
 <div class="register-container">
@@ -31,7 +34,7 @@
         <div class="auth__wrap-input">
             <input type="password" class="auth__input" placeholder="confirm password" name="confirm-password" pattern=".{5,20}" required />
         </div>
-        <button class="button button--large button--black-bg auth__button">Register</button>
+        <button class="button auth__button">Register</button>
     </form>
 </div>
 {% endblock %}

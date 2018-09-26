@@ -15,7 +15,9 @@
 (def ^:private ^:const db-spec
   {:classname   "org.postgresql.Driver"
    :subprotocol "postgresql"
-   :subname     "//localhost:5432/auth"})
+   :subname     "//localhost:5432/auth"
+   :user        "auth_user"
+   :password    "clojureauth"})
 
 (defn connection-pool
   "Create a c3p0 connection pool for the given database SPEC."
@@ -81,7 +83,7 @@
 
 (def authdb (or
              (System/getenv "DATABASE_URL")
-             "jdbc:postgresql://localhost/auth"))
+             "jdbc:postgresql://localhost/auth?user=auth_user&password=clojureauth"))
 
 (defn -main [& args]
   (models/create-table authdb)

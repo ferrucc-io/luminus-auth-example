@@ -4,7 +4,8 @@
             [clj-auth.utilities :refer :all]
             [compojure.core :refer :all]
             [ring.util.response :as res]
-            [toucan.db :as db]))
+            [toucan.db :as db])
+  (:gen-class))
 
 
 (defn register-handler [req]
@@ -12,13 +13,12 @@
     (let [email (get-in req [:form-params "email"])
           password (get-in req [:form-params "password"])]
       (if (db/exists? db-model/User :email email)
-        (do
           (layout/error-page {:status 200
                               :title "User already exists"
                               :message "Did you forget your password?"})
-        (do
-          (user-create email password)
-          (res/redirect "https://google.com")))))
+          (do
+            (user-create email password)
+            (res/redirect "/"))))
     (layout/error-page {:status 200
                         :title "Passwords don't match"
                         :message "The passwords you wrote aren't the same"})))
