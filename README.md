@@ -2,6 +2,8 @@
 
 This repository was born out of my frustration looking for a practical example of Luminus Web App with a PostgreSQL database and a functioning authentication system.
 
+This implementation is just a Proof of Concept and is actively being developed.
+
 ## Prerequisites
 
 You will need [Leiningen][1] 2.0 or above installed.
@@ -9,7 +11,7 @@ You will need [Leiningen][1] 2.0 or above installed.
 [1]: https://github.com/technomancy/leiningen
 
 
-You will need a [PostgreSQL][2] installed on your machine.
+You will need a [PostgreSQL][2] database installed on your machine.
 
 [2]: https://github.com/technomancy/leiningen
 
