@@ -77,6 +77,7 @@ input:focus,
 textarea:focus {
     outline: none; }
 
+
 .button {
     overflow: hidden;
     display: inline-block;
@@ -96,17 +97,7 @@ textarea:focus {
     text-decoration: none;
     cursor: pointer;
     transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; }
-.button[disabled] {
-    cursor: default; }
-.button[disabled]:hover, .button[disabled]:focus {
-    transform: none; }
-.button[disabled]:hover .icon, .button[disabled]:focus .icon {
-    transform: none; }
-.button[disabled]:active {
-    transform: none;
-    outline: none; }
-.button[disabled]:not(.state-show-success-tick):not(.state-show-spinner) {
-    opacity: 0.4; }
+
 .button .icon {
     display: inline-block;
     vertical-align: middle;
@@ -124,6 +115,10 @@ textarea:focus {
     box-shadow: 0 2px 4px 0 rgba(136, 144, 195, 0.2), 0 5px 15px 0 rgba(37, 44, 97, 0.15);
     outline: none; }
 
+.container {
+    padding: 0 10px;
+    padding-bottom: 20px;
+}
 
 .nav__logged-user {
     text-align: right;
@@ -131,7 +126,7 @@ textarea:focus {
     margin-right: 10px;
 }
 
-.login-container, .register-container{
+.login-container, .register-container, .forgot-pw-container{
     margin: 0 auto;
     max-width: 600px;
 }
@@ -180,8 +175,12 @@ textarea:focus {
     color: black;
 }
 
+.auth__back-login{
+    text-align: left;
+    color: black;
+}
 
-.auth__forgot-password:hover {
+.auth__forgot-password:hover, .auth__back-login {
     color: black;
 }
 

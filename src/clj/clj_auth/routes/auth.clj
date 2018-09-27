@@ -40,6 +40,10 @@
                           :title "User doesn't exist"
                           :message "This user doesn't exist"}))))
 
+(defn forgot-handler [req]
+      (let [email (get-in req [:form-params "email"])]
+           (println "Password reset stuff goes here" email)))
+
 (defn logout [req]
   (-> (res/redirect "/")
       (assoc :session {})))
@@ -48,5 +52,6 @@
 (defroutes auth-routes
   (POST "/auth" req (login-handler req))
   (POST "/register" req (register-handler req))
+  (POST "/forgot-password" req (forgot-handler req))
   (GET "/logout" req (logout req)))
 

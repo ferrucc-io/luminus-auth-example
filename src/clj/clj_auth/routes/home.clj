@@ -2,7 +2,7 @@
   (:require [clj-auth.layout :as layout]
             [clj-auth.utilities :refer :all]
             [compojure.core :refer [defroutes GET]]
-            [ring.util.http-response :as response]
+            [ring.util.response :as res]
             [buddy.auth :refer [authenticated? throw-unauthorized]]
             [clojure.java.io :as io]))
 
@@ -13,6 +13,13 @@
     (layout/render
       "home.html" {:user "anonymous"})))
 
+(defn forgot-password [req]
+      (if (req-user req)
+        (res/redirect "/")
+        (layout/render
+          "forgot-password.html")))
+
+
 (defn profile-page [req]
   (if-not (req-user req)
     (layout/render "profile.html" {:user "anon"})
@@ -21,5 +28,6 @@
 
 (defroutes home-routes
   (GET "/" req (home-page req))
+  (GET "/forgot-password" req (forgot-password req))
   (GET "/u/profile" req (profile-page req)))
 

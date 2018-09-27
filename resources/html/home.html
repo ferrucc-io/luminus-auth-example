@@ -3,7 +3,8 @@
 <nav>
     <p class="nav__logged-user">Hello 👋 {{ user }}</p>
 </nav>
-<div class="login-container" style="padding-top: 100px;">
+<div class="container">
+<div class="login-container">
     <div>
         <h1>Login</h1>
     </div>
@@ -17,7 +18,7 @@
         <button class="button auth__button">Log In</button>
     </form>
     <div>
-        <a href="./forgot"><p class="link auth__forgot-password">Forgot your password?</p></a>
+        <a href="./forgot-password"><p class="link auth__forgot-password">Forgot your password?</p></a>
     </div>
 </div>
 <div class="register-container">
@@ -36,5 +37,6 @@
         </div>
         <button class="button auth__button">Register</button>
     </form>
+</div>
 </div>
 {% endblock %}
