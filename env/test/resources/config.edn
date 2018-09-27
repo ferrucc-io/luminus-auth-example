@@ -1,1 +1,3 @@
-{}
+{:DATABASE_URL "jdbc:postgresql://localhost/auth?user=auth_user&password=clojureauth"
+ :DATABASE_USER "auth_user"
+ :DATABASE_PW "clojureauth"}

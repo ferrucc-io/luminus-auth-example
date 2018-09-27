@@ -2,7 +2,8 @@
   (:require [compojure.core :refer :all]
             [clj-auth.models :as model]
             [toucan.db :as db]
-            [buddy.hashers :as hashers])
+            [buddy.hashers :as hashers]
+            [digest :as digest])
   (:gen-class))
 
 (defn ok
@@ -32,5 +33,14 @@
                           :password pw}))
 
 (defn req-user [req]
+  "Returns the username of the "
   (if (get-in req [:session :identity])
     (name (get-in req [:session :identity]))))
+
+(defn rand-str [len]
+      (apply str (take len (repeatedly #(char (+ (rand 52) 65))))))
+
+(defn create-login-token [email]
+      (def date (java.sql.Timestamp. (System/currentTimeMillis)))
+      (db/update! model/User (get (user-selector email) :id) {:token (rand-str 24)
+                                                              :token_issued date}))

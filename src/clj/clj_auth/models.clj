@@ -1,7 +1,7 @@
 (ns clj-auth.models
-    (:require [toucan [db :as db]
-                      [models :as models]]
-              [clojure.java.jdbc :as jdb])
+    (:require  [toucan [db :as db]
+               [models :as models]]
+               [clojure.java.jdbc :as jdb])
     (:gen-class))
 
 (defn create-table [jdb]
@@ -14,6 +14,8 @@
          (id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
           email TEXT NOT NULL UNIQUE,
           password TEXT NOT NULL,
+          token TEXT DEFAULT uuid_generate_v4(),
+          token_issued TIMESTAMPTZ,
           date_created TIMESTAMPTZ NOT NULL DEFAULT now())"]))
 
 (models/defmodel User :users_table
@@ -21,4 +23,4 @@
                  (properties [_]
                              {:timestamped true})
                  (default_fields [_]
-                             [:id :email :password]))
+                             [:id :email :password :token :token_issued]))

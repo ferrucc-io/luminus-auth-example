@@ -2,6 +2,7 @@
   (:require [clj-auth.layout :as layout]
             [clj-auth.models :as db-model]
             [clj-auth.utilities :refer :all]
+            [clj-auth.mailing :refer :all]
             [compojure.core :refer :all]
             [ring.util.response :as res]
             [toucan.db :as db])
@@ -42,7 +43,9 @@
 
 (defn forgot-handler [req]
       (let [email (get-in req [:form-params "email"])]
-           (println "Password reset stuff goes here" email)))
+           (create-login-token email)
+           (send-pw-reset email (:token (user-selector email))))
+      (res/redirect "/"))
 
 (defn logout [req]
   (-> (res/redirect "/")
