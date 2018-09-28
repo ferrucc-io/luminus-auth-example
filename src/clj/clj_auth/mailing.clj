@@ -3,7 +3,7 @@
     (:gen-class))
 
 (defn send-pw-reset [user_email token]
-      (def message_body (str "Testing this out with a dummy token: " token))
+      (def message_body (str "Click this linke to reset your password: localhost:3000/reset/" user_email "/" token))
       (def mail_info {:host "smtp.mailtrap.io"
                       :user "12341d55f5c1ed"
                       :pass "ADD YOUR OWN"})

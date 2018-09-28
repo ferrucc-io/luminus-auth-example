@@ -47,6 +47,22 @@
            (send-pw-reset email (:token (user-selector email))))
       (res/redirect "/"))
 
+(defn reset-password [req]
+      (if (= (get-in req [:form-params "password"]) (get-in req [:form-params "confirm-password"]))
+        (do (let [email (get-in req [:form-params "email"])
+                  token (get-in req [:form-params "token"])
+                  password (get-in req [:form-params "password"])]
+                 (if (= token (get (user-selector email) :token))
+                   (do (user-update-password email password)
+                       (res/redirect "/"))
+                   (layout/error-page {:status 200
+                                       :title "Invalid token"
+                                       :message "You were not allowed to reset the password"}))))
+        (layout/error-page {:status 200
+                            :title "Passwords do not match"
+                            :message "Make sure the password and confirm password fields match"})))
+
+
 (defn logout [req]
   (-> (res/redirect "/")
       (assoc :session {})))
@@ -56,5 +72,6 @@
   (POST "/auth" req (login-handler req))
   (POST "/register" req (register-handler req))
   (POST "/forgot-password" req (forgot-handler req))
+  (POST "/reset-password" req (reset-password req))
   (GET "/logout" req (logout req)))
 
